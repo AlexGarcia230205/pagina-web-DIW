@@ -1,0 +1,7 @@
+#cabecero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D3866;
+    color: #F4D35E;
+}
