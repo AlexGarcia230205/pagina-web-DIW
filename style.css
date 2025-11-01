@@ -24,6 +24,7 @@ body {
   background-color: #0D3866;
   color: #F4D35E;
   position: relative;
+  border-bottom: 3px #225d9d solid;
 }
 
 /* === MENÚ === */
@@ -78,6 +79,64 @@ body {
   flex: 0 0 auto;
 }
 
+/*Banner principal*/
+
+.banner {
+  background-image: url('img/pasteleria-2\ 1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+  display: flex;
+  align-items: flex-start;
+  text-align: center;
+  padding-top: 5rem;
+  justify-content: center;
+  color: white;
+  position: relative;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* Negro con 40% de opacidad */
+  z-index: 1;
+}
+
+.banner-contenido {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 1.5rem;
+}
+
+.banner h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Montserrat Alternates';
+}
+
+.banner button {
+  display: inline-flex;
+  color: #0D3866;
+  font-family: 'Montserrat';
+  letter-spacing: 0.25rem;
+  font-weight: 700;
+  background-color: #F4D35E;
+  padding: 0.75rem 7.5rem;
+  margin-top: 5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 /* === ESCRITORIO (≥769px) === */
 @media (min-width: 769px) {
   #cabecero {
@@ -99,19 +158,19 @@ body {
 
 /* === MÓVIL (≤768px) === */
 @media (max-width: 768px) {
-  /* Mostrar botón hamburguesa */
+  #cabecero {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative; /* necesario para absolute */
+  }
+
   #menu-desplegable {
     display: flex;
   }
 
-  /* Header en fila: logo izquierda, botón derecha */
-  #cabecero {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  /* Menú oculto por defecto */
+  /* Menú ABSOLUTO, pero controlamos el espacio */
   #menu {
     position: absolute;
     top: 100%;
@@ -119,13 +178,13 @@ body {
     right: 0;
     background-color: #0D3866;
     padding: 1.25rem;
-    display: none; /* Oculto hasta que se active */
+    display: none;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
   }
 
-  /* Mostrar menú cuando tenga la clase 'activo' */
   #menu.activo {
     display: flex;
   }
@@ -134,10 +193,37 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
+    list-style: none;
   }
 
-  /* Eliminar fantasma en móvil */
   #cabecero::after {
     display: none;
+  }
+
+  /* EMPUJAR EL BANNER CUANDO EL MENÚ ESTÉ ABIERTO */
+  body.menu-abierto .banner {
+    margin-top: 180px; /* Ajusta este valor según la altura total del header + menú */
+  }
+
+  /*Banner para móvil*/
+
+  .banner {
+    padding-top: 1rem
+  }
+
+  .banner h1 {
+    font-size: 1.8rem; /* Más pequeño que en escritorio */
+  }
+
+  .banner p {
+    font-size: 1rem;
+    padding: 0 1rem; /* Evita que el texto toque los bordes */
+  }
+
+  .banner button {
+    font-size: 1rem;        /* Texto más pequeño */
+    padding: 0.6rem 1.2rem; /* Menos padding */
+    width: auto;            /* Asegura que no se expanda */
+    margin-top: 2.5rem;
   }
 }
