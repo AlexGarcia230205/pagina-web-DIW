@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <!--Fuente Montserrat importada para los estilos-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <title>Inicio</title>
 </head>
 <body>
     <!--Cabecera-->
     <header id="cabecero">
-        <div id="logo">Panaderia</div>
+        <a href="index.html"><img src="img/Logo.png" alt="Logotipo de la panadería" id="logo"></a>
+
+        <!-- Botón hamburguesa (solo visible en móvil) -->
+        <button id="menu-desplegable" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <!--Menú-->
         <nav id="menu">
             <ul>
-                <li><a href="#">Inicio</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Contacto</a></li>
                 <li><a href="#">Dulces</a></li>
                 <li><a href="#">Salados</a></li>

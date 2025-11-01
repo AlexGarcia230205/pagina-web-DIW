@@ -1,7 +1,143 @@
-#cabecero{
-    display: flex;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* === LOGO: es una <img> directa === */
+#logo {
+  width: 75px;
+  max-width: 140px;
+  height: auto;
+  display: block;
+}
+
+#cabecero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #0D3866;
+  color: #F4D35E;
+  position: relative;
+}
+
+/* === MENÚ === */
+#menu ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+#menu a {
+  color: #F4D35E;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+#menu a:hover {
+  border-bottom-color: #F4D35E;
+}
+
+/* === BOTÓN HAMBURGUESA === */
+#menu-desplegable {
+  display: none; /* Oculto en escritorio */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+#menu-desplegable span {
+  width: 100%;
+  height: 2px;
+  background-color: #F4D35E;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* === ELEMENTO FANTASMA PARA CENTRAR MENÚ EN ESCRITORIO === */
+#cabecero::after {
+  content: '';
+  flex: 0 0 auto;
+}
+
+/* === ESCRITORIO (≥769px) === */
+@media (min-width: 769px) {
+  #cabecero {
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+
+  #logo {
+    max-width: 180px;
+  }
+
+  #menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* === MÓVIL (≤768px) === */
+@media (max-width: 768px) {
+  /* Mostrar botón hamburguesa */
+  #menu-desplegable {
+    display: flex;
+  }
+
+  /* Header en fila: logo izquierda, botón derecha */
+  #cabecero {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Menú oculto por defecto */
+  #menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     background-color: #0D3866;
-    color: #F4D35E;
+    padding: 1.25rem;
+    display: none; /* Oculto hasta que se active */
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mostrar menú cuando tenga la clase 'activo' */
+  #menu.activo {
+    display: flex;
+  }
+
+  #menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  /* Eliminar fantasma en móvil */
+  #cabecero::after {
+    display: none;
+  }
 }
